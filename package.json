@@ -1,0 +1,66 @@
+{
+  "name": "mcp-stub",
+  "version": "0.1.0",
+  "description": "Scripted mock MCP server for testing AI agents: per-call responses, injected errors, timeouts and dropped connections, and assertions on which tools the agent called.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mock",
+    "stub",
+    "fake",
+    "testing",
+    "test",
+    "agent",
+    "ai-agent",
+    "llm",
+    "tools",
+    "tool-calling",
+    "streamable-http"
+  ],
+  "homepage": "https://github.com/acus9345/mcp-stub#readme",
+  "bugs": {
+    "url": "https://github.com/acus9345/mcp-stub/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acus9345/mcp-stub.git"
+  },
+  "license": "MIT",
+  "author": "acus9345 <acus9345@gmail.com>",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
+    "prelint": "npm run build",
+    "lint": "tsc -p tsconfig.json",
+    "pretest": "npm run build",
+    "test": "node --test \"test/*.test.ts\"",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}
